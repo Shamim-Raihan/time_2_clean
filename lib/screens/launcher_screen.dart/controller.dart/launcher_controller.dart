@@ -5,11 +5,11 @@ import 'package:time_2_clean/screens/auth_screens/Views/sign_up_screen.dart';
 class LauncherContoroller extends GetxController {
   @override
   void onInit() {
-checkUser();
+    checkUser();
     super.onInit();
   }
 
-  checkUser () {
-    Get.offAll(()=> const SignupScreen());
+  checkUser() {
+    Get.offAll(() => SignupScreen());
   }
 }
