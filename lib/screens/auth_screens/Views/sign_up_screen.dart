@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:time_2_clean/screens/auth_screens/controller/auth_controller.dart';
 import 'package:time_2_clean/utils/color_helper.dart';
-import 'package:time_2_clean/utils/customTexfiled.dart';
+import 'package:time_2_clean/utils/custom_tex_filed.dart';
 import 'package:time_2_clean/utils/space_helper.dart';
 import 'package:time_2_clean/utils/style_helper.dart';
 
@@ -14,50 +14,118 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          topImg(context),
-          subtop(context),
-          inputfiled(context),
-          subBottomImg(context),
-          footer(context),
-        ],
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Stack(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+              ),
+              topBackButton(context),
+              topImg(context),
+              inputfiled(context),
+              footer(context),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget topBackButton(BuildContext context) {
+    return Positioned(
+      top: 40.h,
+      left: 20.w,
+      child: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          width: 30.w,
+          height: 25.h,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: const Color(0xff7D7D7D)),
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          child: Center(
+            child: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: const Color(0xff7D7D7D),
+              size: 15.sp,
+            ),
+          ),
+        ),
       ),
     );
   }
 
   Widget inputfiled(context) {
     return Positioned(
-        top: 120.h,
+        top: 80.h,
         left: 30.w,
         right: 30.w,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Sign In',
+              'Sign Up',
               style: StyleHelper.headline1,
             ),
             SpaceHelper.verticalSpace15,
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                      text: 'By click the sign up button, you’re agree to  ',
+                      style: StyleHelper.agreeText),
+                  TextSpan(text: 'Time 2 ', style: StyleHelper.agreeTextBold),
+                  TextSpan(
+                      text: 'Cleann’s Terms and Service ',
+                      style: StyleHelper.agreeTextBold),
+                  TextSpan(
+                      text: 'and acknlowledge the',
+                      style: StyleHelper.agreeText),
+                  TextSpan(
+                      text: '\nPrivacy and Policy',
+                      style: StyleHelper.agreeTextBold),
+                ],
+              ),
+              textAlign: TextAlign.left,
+            ),
+            SpaceHelper.verticalSpace15,
+            Text(
+              'Name',
+              style: StyleHelper.title,
+            ),
+            SpaceHelper.verticalSpace10,
+            CustomTextField(
+              hintText: 'Enter user name',
+              controller: _authController.nameController.value,
+            ),
+            SpaceHelper.verticalSpace10,
             Text(
               'Email',
               style: StyleHelper.title,
             ),
-            SpaceHelper.verticalSpace15,
+            SpaceHelper.verticalSpace10,
             CustomTextField(
               hintText: 'Enter your email',
-              controller: _authController.emailController,
+              controller: _authController.emailController.value,
             ),
-            SpaceHelper.verticalSpace15,
+            SpaceHelper.verticalSpace10,
             Text(
               'Password',
               style: StyleHelper.title,
             ),
-            SpaceHelper.verticalSpace15,
+            SpaceHelper.verticalSpace10,
             Obx(
               () => CustomTextField(
                 hintText: 'Enter your password',
-                controller: _authController.passController,
+                controller: _authController.passController.value,
                 suffixIcon: InkWell(
                   onTap: () {
                     _authController.obscureText.value =
@@ -73,44 +141,57 @@ class SignupScreen extends StatelessWidget {
                 obscureText: _authController.obscureText.value,
               ),
             ),
-            SpaceHelper.verticalSpace15,
+            SpaceHelper.verticalSpace10,
+            Text(
+              'Confirm Password',
+              style: StyleHelper.title,
+            ),
+            SpaceHelper.verticalSpace10,
+            Obx(
+              () => CustomTextField(
+                hintText: 'Re-type password',
+                controller: _authController.confirmPassController.value,
+                suffixIcon: InkWell(
+                  onTap: () {
+                    _authController.confirmObscureText.value =
+                        !_authController.confirmObscureText.value;
+                  },
+                  child: Icon(
+                    _authController.confirmObscureText.value
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
+                    color: const Color(0xffABB3BB),
+                  ),
+                ),
+                obscureText: _authController.confirmObscureText.value,
+              ),
+            ),
+            SpaceHelper.verticalSpace10,
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Obx(
-                      () => Theme(
-                        data: Theme.of(context).copyWith(
-                          unselectedWidgetColor: const Color(0xffD0D0D0),
-                        ),
-                        child: Checkbox(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(2.r)),
-                          value: _authController.checkedbox.value,
-                          onChanged: (bool? newValue) {
-                            if (newValue != null) {
-                              _authController.checkedbox.value = newValue;
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    // SpaceHelper.horizontalSpace5,
-                    Text(
-                      'Remember me',
-                      style: StyleHelper.subtitle,
-                    )
-                  ],
+                Obx(
+                  () => Checkbox(
+                    activeColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(2.r)),
+                    value: _authController.isAgree.value,
+                    onChanged: (bool? newValue) {
+                      if (newValue != null) {
+                        _authController.isAgree.value = newValue;
+                      }
+                    },
+                  ),
                 ),
                 Text(
-                  'Forgot password?',
+                  'Accept term of  service',
                   style: TextStyle(
-                      fontSize: 12.sp, color: const Color(0xff125EC4)),
-                )
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12.sp,
+                      color: const Color(0xff125EC4)),
+                ),
               ],
             ),
-            SpaceHelper.verticalSpace25,
+            SpaceHelper.verticalSpace10,
             Container(
               width: 334.w,
               height: 40.h,
@@ -123,7 +204,7 @@ class SignupScreen extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Sign in',
+                  'Sign Up',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -135,16 +216,6 @@ class SignupScreen extends StatelessWidget {
               ),
             ),
           ],
-        ));
-  }
-
-  Widget subtop(BuildContext context) {
-    return Positioned(
-        top: 104,
-        child: Image.asset(
-          'assets/images/time 2 cleann 2.png',
-          width: MediaQuery.of(context).size.width,
-          height: 30.h,
         ));
   }
 
@@ -162,60 +233,11 @@ class SignupScreen extends StatelessWidget {
   Widget footer(BuildContext context) {
     return Positioned(
       bottom: 0,
-      child: Stack(
-        children: [
-          Image.asset(
-            'assets/images/bottomImg.png',
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.cover,
-            height: 200.h,
-          ),
-          Positioned(
-            bottom: 100.h,
-            left: 30.w,
-            right: 30.w,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 1.h,
-                      width: 96.w,
-                      color: Colors.white,
-                    ),
-                    SpaceHelper.horizontalSpace10,
-                    Text(
-                      'Or Continue with',
-                      style: TextStyle(
-                          color: const Color(0xffABB3BB),
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400),
-                    ),
-                    SpaceHelper.horizontalSpace10,
-                    Container(
-                      height: 1.h,
-                      width: 96.w,
-                      color: Colors.white,
-                    )
-                  ],
-                ),
-                SpaceHelper.horizontalSpace10,
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget subBottomImg(BuildContext context) {
-    return Positioned(
-      bottom: 153.h,
       child: Image.asset(
-        'assets/images/bottomGroupImg.png',
-        width: MediaQuery.of(context).size.width - 30.w,
-        height: 50.h,
+        'assets/images/bottomImgForSignUp.png',
+        width: MediaQuery.of(context).size.width,
+        fit: BoxFit.cover,
+        height: 170.h,
       ),
     );
   }
