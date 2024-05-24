@@ -11,6 +11,7 @@ class SpaceHelper {
   static SizedBox verticalSpace35 = SizedBox(height: 35.h);
 
   static SizedBox horizontalSpace5 = SizedBox(width: 5.w);
+  static SizedBox horizontalSpace3 = SizedBox(width: 3.w);
   static SizedBox horizontalSpace10 = SizedBox(width: 10.w);
   static SizedBox horizontalSpace15 = SizedBox(width: 15.w);
   static SizedBox horizontalSpace20 = SizedBox(width: 20.w);
