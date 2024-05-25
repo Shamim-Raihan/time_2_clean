@@ -1,9 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:pinput/pinput.dart';
 import 'package:time_2_clean/screens/auth_screens/controller/auth_controller.dart';
+import 'package:time_2_clean/screens/home/views/home_screen.dart';
 import 'package:time_2_clean/utils/color_helper.dart';
 import 'package:time_2_clean/utils/space_helper.dart';
 import 'package:time_2_clean/utils/style_helper.dart';
@@ -28,7 +30,7 @@ class OtpScreen extends StatelessWidget {
               _buildTopImgView(context),
               _buildFooterView(context),
               _buildLogoView(context),
-              Obx(() => _authController.OtpSubmitted.value
+              Obx(() => _authController.otpSubmitted.value
                   ? _buildOTPVerification(context)
                   : _buildNumberPicker(context)),
               _buildtopBackButton(context),
@@ -45,9 +47,8 @@ class OtpScreen extends StatelessWidget {
       left: 20.w,
       child: InkWell(
         onTap: () {
-          print("skhdfkjsndgsf");
-          _authController.OtpSubmitted.value
-              ? _authController.OtpSubmitted.value = false
+          _authController.otpSubmitted.value
+              ? _authController.otpSubmitted.value = false
               : Navigator.pop(context);
         },
         child: Container(
@@ -161,9 +162,11 @@ class OtpScreen extends StatelessWidget {
                 height: 45.h,
                 width: MediaQuery.of(context).size.width,
                 child: InternationalPhoneNumberInput(
-                  textFieldController: _authController.PhoneNumbercontroller,
+                  textFieldController: _authController.phoneNumbercontroller,
                   onInputValidated: (bool value) {
-                    print(value);
+                    if (kDebugMode) {
+                      print(value);
+                    }
                   },
                   selectorConfig: const SelectorConfig(
                       selectorType: PhoneInputSelectorType.DROPDOWN,
@@ -188,7 +191,9 @@ class OtpScreen extends StatelessWidget {
                                 .primaryColor)), // Add border to the entire input field
                   ),
                   onSaved: (PhoneNumber number) {
-                    print('On Saved: $number');
+                    if (kDebugMode) {
+                      print('On Saved: $number');
+                    }
                   },
                   onInputChanged: (PhoneNumber value) {},
                 ),
@@ -197,12 +202,12 @@ class OtpScreen extends StatelessWidget {
               SpaceHelper.verticalSpace30,
               InkWell(
                 onTap: () {
-                  _authController.OtpSubmitted.value = true;
+                  _authController.otpSubmitted.value = true;
                   _authController.startOtpCountdown();
                 },
                 child: Container(
                   width: 314.w,
-                  height: 40.h,
+                  height: 35.h,
                   clipBehavior: Clip.antiAlias,
                   decoration: ShapeDecoration(
                     color: ColorHelper.primaryColor,
@@ -254,7 +259,7 @@ class OtpScreen extends StatelessWidget {
                         text: 'Enter the code from the sms we sent to ',
                         style: StyleHelper.agreeText),
                     TextSpan(
-                        text: '${_authController.PhoneNumbercontroller.text} ',
+                        text: '${_authController.phoneNumbercontroller.text} ',
                         style: StyleHelper.agreeTextBold),
                   ],
                 ),
@@ -267,7 +272,7 @@ class OtpScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   child: Column(
                     children: [
-                      Obx(() => Text(_authController.OTPTime.value,
+                      Obx(() => Text(_authController.otpTime.value,
                           style: StyleHelper.blueTextBold)),
                       SpaceHelper.verticalSpace10,
                       Pinput(
@@ -301,25 +306,30 @@ class OtpScreen extends StatelessWidget {
                   )),
               SpaceHelper.verticalSpace60,
               SpaceHelper.verticalSpace10,
-              Container(
-                width: 314.w,
-                height: 40.h,
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: ColorHelper.primaryColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.r),
+              InkWell(
+                onTap: () {
+                  Get.offAll(() => const HomeScreen(), transition: Transition.rightToLeft);
+                },
+                child: Container(
+                  width: 314.w,
+                  height: 40.h,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: ShapeDecoration(
+                    color: ColorHelper.primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
                   ),
-                ),
-                child: Center(
-                  child: Text(
-                    'Submit',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.sp,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
+                  child: Center(
+                    child: Text(
+                      'Submit',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.sp,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),

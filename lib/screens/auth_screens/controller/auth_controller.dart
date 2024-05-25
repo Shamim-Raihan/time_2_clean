@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,26 +12,26 @@ class AuthController extends GetxController {
   var confirmObscureText = true.obs;
   var isRemember = true.obs;
   var isAgree = true.obs;
-  var OtpSubmitted = false.obs;
-  var OTPTime = '02:30'.obs;
+  var otpSubmitted = false.obs;
+  var otpTime = '02:30'.obs;
 
-  final TextEditingController PhoneNumbercontroller = TextEditingController();
+  final TextEditingController phoneNumbercontroller = TextEditingController();
 
   void startOtpCountdown() {
-    Duration initialDuration = Duration(minutes: 2, seconds: 30);
+    Duration initialDuration = const Duration(minutes: 2, seconds: 30);
     int totalSeconds = initialDuration.inSeconds;
-    Timer.periodic(Duration(seconds: 1), (Timer timer) {
+    Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       int minutes = totalSeconds ~/ 60;
       int seconds = totalSeconds % 60;
-      print(
-          '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}');
-      OTPTime.value =
+      otpTime.value =
           '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
       totalSeconds--;
 
       if (totalSeconds < 0) {
         timer.cancel();
-        print('Countdown complete!');
+        if (kDebugMode) {
+          print('Countdown complete!');
+        }
       }
     });
   }

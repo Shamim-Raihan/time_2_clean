@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:time_2_clean/screens/auth_screens/Views/otp_screen.dart';
+import 'package:time_2_clean/screens/auth_screens/views/otp_screen.dart';
 import 'package:time_2_clean/screens/auth_screens/controller/auth_controller.dart';
 import 'package:time_2_clean/utils/color_helper.dart';
 import 'package:time_2_clean/utils/custom_tex_filed.dart';
@@ -194,7 +194,8 @@ class SignupScreen extends StatelessWidget {
             SpaceHelper.verticalSpace10,
             InkWell(
               onTap: () {
-                Get.offAll(() => OtpScreen());
+                Get.offAll(() => OtpScreen(),
+                    transition: Transition.rightToLeft);
               },
               child: Container(
                 width: 334.w,

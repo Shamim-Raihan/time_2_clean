@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:time_2_clean/screens/auth_screens/Views/sign_up_screen.dart';
+import 'package:time_2_clean/screens/auth_screens/views/sign_up_screen.dart';
 import 'package:time_2_clean/screens/auth_screens/controller/auth_controller.dart';
 import 'package:time_2_clean/utils/color_helper.dart';
 import 'package:time_2_clean/utils/custom_tex_filed.dart';
@@ -107,7 +107,6 @@ class SignInScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // SpaceHelper.horizontalSpace5,
                     Text(
                       'Remember me',
                       style: StyleHelper.subtitle,
@@ -224,7 +223,7 @@ class SignInScreen extends StatelessWidget {
                     SpaceHelper.horizontalSpace5,
                     InkWell(
                       onTap: () {
-                        Get.offAll(() => SignupScreen());
+                        Get.offAll(() => SignupScreen(), transition: Transition.rightToLeft);
                       },
                       child: Text(
                         'Sign up',
