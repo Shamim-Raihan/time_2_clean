@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:time_2_clean/screens/auth_screens/Views/otp_screen.dart';
 import 'package:time_2_clean/screens/auth_screens/controller/auth_controller.dart';
 import 'package:time_2_clean/utils/color_helper.dart';
 import 'package:time_2_clean/utils/custom_tex_filed.dart';
@@ -26,8 +26,8 @@ class SignupScreen extends StatelessWidget {
               ),
               topBackButton(context),
               topImg(context),
-              inputfiled(context),
               footer(context),
+              inputfiled(context),
             ],
           ),
         ),
@@ -192,25 +192,30 @@ class SignupScreen extends StatelessWidget {
               ],
             ),
             SpaceHelper.verticalSpace10,
-            Container(
-              width: 334.w,
-              height: 40.h,
-              clipBehavior: Clip.antiAlias,
-              decoration: ShapeDecoration(
-                color: ColorHelper.buttonColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
+            InkWell(
+              onTap: () {
+                Get.offAll(() => OtpScreen());
+              },
+              child: Container(
+                width: 334.w,
+                height: 40.h,
+                clipBehavior: Clip.antiAlias,
+                decoration: ShapeDecoration(
+                  color: ColorHelper.primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
                 ),
-              ),
-              child: Center(
-                child: Text(
-                  'Sign Up',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.sp,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
+                child: Center(
+                  child: Text(
+                    'Sign Up',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.sp,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),

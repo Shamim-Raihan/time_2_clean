@@ -1,6 +1,6 @@
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
-import 'package:time_2_clean/screens/auth_screens/Views/sign_up_screen.dart';
+import 'package:time_2_clean/screens/auth_screens/Views/sign_in_screen.dart';
 
 class LauncherContoroller extends GetxController {
   @override
@@ -10,6 +10,6 @@ class LauncherContoroller extends GetxController {
   }
 
   checkUser() {
-    Get.offAll(() => SignupScreen());
+    Get.to(() => SignInScreen());
   }
 }

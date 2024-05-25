@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:time_2_clean/screens/auth_screens/Views/sign_up_screen.dart';
 import 'package:time_2_clean/screens/auth_screens/controller/auth_controller.dart';
 import 'package:time_2_clean/utils/color_helper.dart';
 import 'package:time_2_clean/utils/custom_tex_filed.dart';
@@ -126,7 +127,7 @@ class SignInScreen extends StatelessWidget {
               height: 40.h,
               clipBehavior: Clip.antiAlias,
               decoration: ShapeDecoration(
-                color: ColorHelper.buttonColor,
+                color: ColorHelper.primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.r),
                 ),
@@ -221,12 +222,17 @@ class SignInScreen extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 12.sp),
                     ),
                     SpaceHelper.horizontalSpace5,
-                    Text(
-                      'Sign up',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w700),
+                    InkWell(
+                      onTap: () {
+                        Get.offAll(() => SignupScreen());
+                      },
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700),
+                      ),
                     )
                   ],
                 ),

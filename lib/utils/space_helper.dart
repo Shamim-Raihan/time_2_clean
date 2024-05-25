@@ -9,6 +9,7 @@ class SpaceHelper {
   static SizedBox verticalSpace25 = SizedBox(height: 25.h);
   static SizedBox verticalSpace30 = SizedBox(height: 30.h);
   static SizedBox verticalSpace35 = SizedBox(height: 35.h);
+  static SizedBox verticalSpace60 = SizedBox(height: 60.h);
 
   static SizedBox horizontalSpace5 = SizedBox(width: 5.w);
   static SizedBox horizontalSpace3 = SizedBox(width: 3.w);

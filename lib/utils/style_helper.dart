@@ -33,4 +33,11 @@ class StyleHelper {
     fontFamily: 'PlusJakartaSans',
     color: ColorHelper.greyColor,
   );
+
+  static TextStyle blueTextBold = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'PlusJakartaSans',
+    color: ColorHelper.primaryColor,
+  );
 }
