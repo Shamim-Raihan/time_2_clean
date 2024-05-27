@@ -46,6 +46,12 @@ class StyleHelper {
     fontFamily: 'Inter',
     color: const Color(0xff0F1225),
   );
+    static TextStyle interSemiBold16 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Inter',
+    color: const Color(0xff0F1225),
+  );
   static TextStyle interSemiBold20 = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeight.w600,
@@ -88,6 +94,12 @@ class StyleHelper {
     fontFamily: 'Inter',
     letterSpacing: 0.7,
     color: const Color(0xff0F1225).withOpacity(.6),
+  );
+    static TextStyle interRegularBold13 = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Inter',
+    color: const Color(0xffFF9222),
   );
   static TextStyle interMedium10 = TextStyle(
     fontSize: 10.sp,

@@ -5,7 +5,7 @@ class ColorHelper {
   static Color primaryColor = const Color(0xFF004AAD);
   static Color primaryColorwithOpacity = const Color.fromARGB(61, 0, 75, 173);
   static Color greyColor = const Color(0xFF75788D);
-  static Color lightGreyColor = Colors.grey.shade200;
+  static Color lightGreyColor = const Color.fromARGB(71, 158, 158, 158);
   static Color whiteColor = const Color.fromARGB(255, 255, 255, 255);
   static Color blackColor = const Color.fromARGB(255, 0, 0, 0);
   static Color blueColor = const Color(0xff1D406E);
