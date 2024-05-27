@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:time_2_clean/screens/auth_screens/views/otp_screen.dart';
 import 'package:time_2_clean/screens/auth_screens/controller/auth_controller.dart';
 import 'package:time_2_clean/utils/color_helper.dart';
-import 'package:time_2_clean/utils/custom_tex_filed.dart';
+import 'package:time_2_clean/global_widgets/custom_tex_filed.dart';
 import 'package:time_2_clean/utils/space_helper.dart';
 import 'package:time_2_clean/utils/style_helper.dart';
 
