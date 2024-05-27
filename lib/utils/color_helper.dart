@@ -12,4 +12,6 @@ class ColorHelper {
   static Color greyIconColor = const Color(0xffD9D9D9);
   static Color services1stColor = const Color(0xffEEFFC7);
   static Color services2ndColor = const Color(0xffFFEEDF);
+  static Color containerBorderColor = const Color.fromARGB(255, 186, 205, 229);
+
 }
