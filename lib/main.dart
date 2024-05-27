@@ -5,6 +5,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:time_2_clean/common/app_contoller.dart';
 import 'package:time_2_clean/screens/auth_screens/views/sign_in_screen.dart';
+import 'package:time_2_clean/screens/home/views/home_screen.dart';
 
 void main() {
   Get.put(AppContoller());
@@ -25,8 +26,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: SignInScreen(),
+        home: HomeScreen(),
       ),
     );
   }
 }
+ 

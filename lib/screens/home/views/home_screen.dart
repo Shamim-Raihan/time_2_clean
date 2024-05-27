@@ -32,9 +32,11 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: offerSections(context),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: services(context),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.w),
+                child: services(context),
+              ),
             )
           ],
         ),
@@ -44,47 +46,57 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget services(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SpaceHelper.verticalSpace20,
-          Text(
-            'Services',
-            style: StyleHelper.interSemiBold18,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SpaceHelper.verticalSpace20,
+        Text(
+          'Services',
+          style: StyleHelper.interSemiBold18,
+        ),
+        Expanded(
+          child: Column(
+            children: [
+              SpaceHelper.verticalSpace10,
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    Get.to((const CleaningCategories()),
+                        transition: Transition.rightToLeft);
+                  },
+                  child: servicsSection(
+                    bgColor: ColorHelper.services1stColor,
+                    context: context,
+                    title: 'House Cleaning',
+                    subtitle:
+                        "Step into a clean and welcoming house after we're done.",
+                    img: 'assets/images/services1stImg.png',
+                  ),
+                ),
+              ),
+              SpaceHelper.verticalSpace10,
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    Get.to((const CleaningCategories()),
+                        transition: Transition.rightToLeft);
+                  },
+                  child: servicsSection(
+                    bgColor: ColorHelper.services2ndColor,
+                    context: context,
+                    title: 'Apartment Cleaning',
+                    subtitle: 'Clean, fresh, and ready for your apartment living.',
+                    img: 'assets/images/services2ndImg.png',
+                  ),
+                ),
+              ),
+              SpaceHelper.verticalSpace10,
+            ],
           ),
-          SpaceHelper.verticalSpace10,
-          InkWell(
-            onTap: () {
-              Get.to((const CleaningCategories()),
-                  transition: Transition.rightToLeft);
-            },
-            child: servicsSection(
-              bgColor: ColorHelper.services1stColor,
-              context: context,
-              title: 'House Cleaning',
-              subtitle:
-                  "Step into a clean and welcoming house after we're done.",
-              img: 'assets/images/services1stImg.png',
-            ),
-          ),
-          SpaceHelper.verticalSpace10,
-          InkWell(
-            onTap: () {
-              Get.to((const CleaningCategories()),
-                  transition: Transition.rightToLeft);
-            },
-            child: servicsSection(
-              bgColor: ColorHelper.services2ndColor,
-              context: context,
-              title: 'Apartment Cleaning',
-              subtitle: 'Clean, fresh, and ready for your apartment living.',
-              img: 'assets/images/services2ndImg.png',
-            ),
-          ),
-          SpaceHelper.verticalSpace10,
-        ],
-      ),
+        ),
+     
+     
+      ],
     );
   }
 
@@ -336,7 +348,6 @@ class HomeScreen extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(17.r), color: bgColor),
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: EdgeInsets.only(left: 15.w),
