@@ -82,9 +82,22 @@ class StyleHelper {
     fontFamily: 'Inter',
     color: Colors.white,
   );
+  static TextStyle interRegular13 = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Inter',
+    letterSpacing: 0.7,
+    color: const Color(0xff0F1225).withOpacity(.6),
+  );
   static TextStyle interMedium10 = TextStyle(
     fontSize: 10.sp,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Inter',
+    color: const Color(0xff0F1225),
+  );
+  static TextStyle interMedium13 = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w500,
     fontFamily: 'Inter',
     color: const Color(0xff0F1225),
   );
