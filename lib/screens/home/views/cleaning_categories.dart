@@ -20,11 +20,9 @@ class CleaningCategories extends StatelessWidget {
       backgroundColor: ColorHelper.bgColor,
       body: Column(
         children: [
-          SpaceHelper.verticalSpace50,
           const CommonAppbar(
             title: 'What Do You Need?',
           ),
-          // SpaceHelper.verticalSpace20,
           SizedBox(
             // color: Colors.red,
             width: MediaQuery.of(context).size.width,
@@ -48,11 +46,12 @@ class CleaningCategories extends StatelessWidget {
 
   Widget bottomSection(BuildContext context) {
     return Expanded(
+        flex: 1,
         child: Image.asset(
-      'assets/images/categoriesBottomImg.png',
-      fit: BoxFit.cover,
-      width: MediaQuery.of(context).size.width,
-    ));
+          'assets/images/categoriesBottomImg.png',
+          fit: BoxFit.cover,
+          width: MediaQuery.of(context).size.width,
+        ));
   }
 
   Widget rightSelection() {
@@ -63,7 +62,7 @@ class CleaningCategories extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Get.to((const DeepCleaning()),
+              Get.to(() => const DeepCleaning(),
                   transition: Transition.rightToLeft);
             },
             child: Image.asset(
@@ -73,7 +72,7 @@ class CleaningCategories extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Get.to((const MoveInOutCleaning()),
+              Get.to(() => const MoveInOutCleaning(),
                   transition: Transition.rightToLeft);
             },
             child: Image.asset(
@@ -94,7 +93,7 @@ class CleaningCategories extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Get.to((const StandardCleaning()),
+              Get.to(() => const StandardCleaning(),
                   transition: Transition.rightToLeft);
             },
             child: Image.asset(
@@ -104,7 +103,7 @@ class CleaningCategories extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Get.to((const RentalCleaning()),
+              Get.to(() => const RentalCleaning(),
                   transition: Transition.rightToLeft);
             },
             child: Image.asset(

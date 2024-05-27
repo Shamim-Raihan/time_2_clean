@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:time_2_clean/utils/space_helper.dart';
 import 'package:time_2_clean/utils/style_helper.dart';
 
@@ -101,7 +102,7 @@ class CategoriesWidget extends StatelessWidget {
               ),
             ],
           ),
-          SpaceHelper.verticalSpace15,
+          SpaceHelper.verticalSpace30,
         ],
       ),
     );
