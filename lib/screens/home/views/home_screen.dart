@@ -16,20 +16,27 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorHelper.whiteColor,
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SpaceHelper.verticalSpace40,
-              searchSection(context),
-              bludotImage(),
-              SpaceHelper.verticalSpace10,
-              suggestions(),
-              SpaceHelper.verticalSpace10,
-              offerSections(context),
-              services(context)
-            ],
-          ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SpaceHelper.verticalSpace25,
+            searchSection(context),
+            bludotImage(),
+            SpaceHelper.verticalSpace10,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: suggestions(),
+            ),
+            SpaceHelper.verticalSpace10,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: offerSections(context),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: services(context),
+            )
+          ],
         ),
         bottomNavigationBar: CustomBottomNavBar(),
       ),
@@ -37,47 +44,47 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget services(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SpaceHelper.verticalSpace20,
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Text(
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SpaceHelper.verticalSpace20,
+          Text(
             'Services',
             style: StyleHelper.interSemiBold18,
           ),
-        ),
-        SpaceHelper.verticalSpace10,
-        InkWell(
-          onTap: () {
-            Get.to((const CleaningCategories()),
-                transition: Transition.rightToLeft);
-          },
-          child: servicsSection(
-            bgColor: ColorHelper.services1stColor,
-            context: context,
-            title: 'House Cleaning',
-            subtitle: "Step into a clean and welcoming house after we're done.",
-            img: 'assets/images/services1stImg.png',
+          SpaceHelper.verticalSpace10,
+          InkWell(
+            onTap: () {
+              Get.to((const CleaningCategories()),
+                  transition: Transition.rightToLeft);
+            },
+            child: servicsSection(
+              bgColor: ColorHelper.services1stColor,
+              context: context,
+              title: 'House Cleaning',
+              subtitle:
+                  "Step into a clean and welcoming house after we're done.",
+              img: 'assets/images/services1stImg.png',
+            ),
           ),
-        ),
-        SpaceHelper.verticalSpace10,
-        InkWell(
-          onTap: () {
-            Get.to((const CleaningCategories()),
-                transition: Transition.rightToLeft);
-          },
-          child: servicsSection(
-            bgColor: ColorHelper.services2ndColor,
-            context: context,
-            title: 'Apartment Cleaning',
-            subtitle: 'Clean, fresh, and ready for your apartment living.',
-            img: 'assets/images/services2ndImg.png',
+          SpaceHelper.verticalSpace10,
+          InkWell(
+            onTap: () {
+              Get.to((const CleaningCategories()),
+                  transition: Transition.rightToLeft);
+            },
+            child: servicsSection(
+              bgColor: ColorHelper.services2ndColor,
+              context: context,
+              title: 'Apartment Cleaning',
+              subtitle: 'Clean, fresh, and ready for your apartment living.',
+              img: 'assets/images/services2ndImg.png',
+            ),
           ),
-        ),
-        SpaceHelper.verticalSpace10,
-      ],
+          SpaceHelper.verticalSpace10,
+        ],
+      ),
     );
   }
 
@@ -90,66 +97,68 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget suggestions() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Suggestions',
-            style: StyleHelper.interSemiBold18,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Suggestions',
+          style: StyleHelper.interSemiBold18,
+        ),
+        SpaceHelper.verticalSpace10,
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: const AlwaysScrollableScrollPhysics(
+              parent: BouncingScrollPhysics()),
+          child: Row(
+            children: [
+              suggestionsContainer(
+                  image: 'assets/images/steamCleaner.png',
+                  height: 77.h,
+                  width: 77.w,
+                  txt: 'Steam Cleaner'),
+              SpaceHelper.horizontalSpace10,
+              suggestionsContainer(
+                  image: 'assets/images/trashCan.png',
+                  height: 71.h,
+                  width: 71.w,
+                  txt: 'Trash Can'),
+              SpaceHelper.horizontalSpace10,
+              suggestionsContainer(
+                  image: 'assets/images/glutterCleaning.png',
+                  height: 53.h,
+                  width: 39.w,
+                  txt: 'Gutter Cleaning'),
+              SpaceHelper.horizontalSpace10,
+              suggestionsContainer(
+                  image: 'assets/images/windowCleaning.png',
+                  height: 40.h,
+                  width: 40.w,
+                  txt: 'Window Cleaning'),
+              SpaceHelper.horizontalSpace10,
+              suggestionsContainer(
+                  image: 'assets/images/pressureWashing.png',
+                  height: 56.h,
+                  width: 44.w,
+                  txt: 'Pressure Washing'),
+              SpaceHelper.horizontalSpace10,
+              suggestionsContainer(
+                  image: 'assets/images/bathroomCleaning.png',
+                  height: 62.h,
+                  width: 61.w,
+                  txt: 'Bathroom Cleaning'),
+            ],
           ),
-          SpaceHelper.verticalSpace10,
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            physics: const AlwaysScrollableScrollPhysics(
-                parent: BouncingScrollPhysics()),
-            child: Row(
-              children: [
-                suggestionsContainer(
-                    image: 'assets/images/steamCleaner.png',
-                    height: 77.h,
-                    width: 77.w,
-                    txt: 'Steam Cleaner'),
-                SpaceHelper.horizontalSpace10,
-                suggestionsContainer(
-                    image: 'assets/images/trashCan.png',
-                    height: 71.h,
-                    width: 71.w,
-                    txt: 'Trash Can'),
-                SpaceHelper.horizontalSpace10,
-                suggestionsContainer(
-                    image: 'assets/images/glutterCleaning.png',
-                    height: 53.h,
-                    width: 39.w,
-                    txt: 'Gutter Cleaning'),
-                SpaceHelper.horizontalSpace10,
-                suggestionsContainer(
-                    image: 'assets/images/windowCleaning.png',
-                    height: 40.h,
-                    width: 40.w,
-                    txt: 'Window Cleaning'),
-                SpaceHelper.horizontalSpace10,
-                suggestionsContainer(
-                    image: 'assets/images/pressureWashing.png',
-                    height: 56.h,
-                    width: 44.w,
-                    txt: 'Pressure Washing'),
-                SpaceHelper.horizontalSpace10,
-                suggestionsContainer(
-                    image: 'assets/images/bathroomCleaning.png',
-                    height: 62.h,
-                    width: 61.w,
-                    txt: 'Bathroom Cleaning'),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
-  Widget bludotImage() => Image.asset('assets/images/buleDot.png');
+  Widget bludotImage() => Image.asset(
+        'assets/images/buleDot.png',
+        width: double.infinity,
+        height: 30.h,
+        fit: BoxFit.fill,
+      );
 
   Widget searchSection(BuildContext context) {
     return Padding(
@@ -221,7 +230,7 @@ class HomeScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: 90.h,
+          height: 85.h,
           width: 98.w,
           clipBehavior: Clip.antiAlias,
           // constraints: BoxConstraints,
@@ -262,57 +271,54 @@ class HomeScreen extends StatelessWidget {
     required subtitle,
     required img,
   }) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
-      child: Container(
-        height: 128.h,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(17.r),
-            color: const Color(0xff1A83CB)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              flex: 3,
-              child: Padding(
-                padding: EdgeInsets.only(left: 15.w, top: 20.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: StyleHelper.interSemiBold20,
-                    ),
-                    SpaceHelper.verticalSpace3,
-                    Text(
-                      subtitle,
-                      style: StyleHelper.interBold10,
-                    ),
-                    SpaceHelper.verticalSpace15,
-                    Container(
-                      width: 133.w,
-                      height: 36.h,
-                      decoration: BoxDecoration(
-                          color: const Color(0xff1374B7),
-                          borderRadius: BorderRadius.circular(19.r)),
-                      child: Center(
-                        child: Text(
-                          'BOOK NOW',
-                          style: StyleHelper.interRegular12,
-                        ),
+    return Container(
+      height: 110.h,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(17.r),
+          color: const Color(0xff1A83CB)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            flex: 3,
+            child: Padding(
+              padding: EdgeInsets.only(left: 15.w, top: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: StyleHelper.interSemiBold20,
+                  ),
+                  SpaceHelper.verticalSpace3,
+                  Text(
+                    subtitle,
+                    style: StyleHelper.interBold10,
+                  ),
+                  SpaceHelper.verticalSpace15,
+                  Container(
+                    width: 120.w,
+                    height: 25.h,
+                    decoration: BoxDecoration(
+                        color: const Color(0xff1374B7),
+                        borderRadius: BorderRadius.circular(19.r)),
+                    child: Center(
+                      child: Text(
+                        'BOOK NOW',
+                        style: StyleHelper.interRegular12,
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
             ),
-            Image.asset(
-              img,
-              fit: BoxFit.cover,
-            )
-          ],
-        ),
+          ),
+          Image.asset(
+            img,
+            fit: BoxFit.cover,
+          )
+        ],
       ),
     );
   }
@@ -324,51 +330,49 @@ class HomeScreen extends StatelessWidget {
     required subtitle,
     required img,
   }) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24.w),
-      child: Container(
-        height: 128.h,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(17.r), color: bgColor),
-        child: Row(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 15.w),
-              child: SizedBox(
-                width: 120.w,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      title,
-                      style: StyleHelper.poppinsSemi16,
-                    ),
-                    SpaceHelper.verticalSpace3,
-                    Text(
-                      subtitle,
-                      style: StyleHelper.interMedium10,
-                    ),
-                  ],
-                ),
+    return Container(
+      height: 90.h,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(17.r), color: bgColor),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 15.w),
+            child: SizedBox(
+              width: 120.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: StyleHelper.poppinsSemi16,
+                  ),
+                  SpaceHelper.verticalSpace3,
+                  Text(
+                    subtitle,
+                    style: StyleHelper.interMedium10,
+                  ),
+                ],
               ),
             ),
-            SizedBox(
-              // color: Colors.red,
-              height: 128.h,
-              width: MediaQuery.of(context).size.width / 2 - 4.w,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(17.r),
-                child: Image.asset(
-                  img,
-                  fit: BoxFit.cover,
-                ),
+          ),
+          const Spacer(),
+          SizedBox(
+            // color: Colors.red,
+            // height: 128.h,
+            width: MediaQuery.of(context).size.width / 2 - 3.3.w,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(17.r),
+              child: Image.asset(
+                img,
+                fit: BoxFit.cover,
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
