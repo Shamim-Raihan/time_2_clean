@@ -85,7 +85,8 @@ class HomeScreen extends StatelessWidget {
                     bgColor: ColorHelper.services2ndColor,
                     context: context,
                     title: 'Apartment Cleaning',
-                    subtitle: 'Clean, fresh, and ready for your apartment living.',
+                    subtitle:
+                        'Clean, fresh, and ready for your apartment living.',
                     img: 'assets/images/services2ndImg.png',
                   ),
                 ),
@@ -94,8 +95,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-     
-     
       ],
     );
   }
@@ -173,59 +172,72 @@ class HomeScreen extends StatelessWidget {
       );
 
   Widget searchSection(BuildContext context) {
-    return Padding(
+    return Container(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
+      // color: Colors.red,
+      width: MediaQuery.of(context).size.width,
       child: Row(
         children: [
-          // SpaceHelper.horizontalSpace24,
-          Container(
-            height: 37.h,
-            width: MediaQuery.of(context).size.width / 1.6,
-            decoration: BoxDecoration(
-                border: Border.all(
-                  color: ColorHelper.greyIconColor,
-                ),
-                borderRadius: BorderRadius.circular(10.r)),
-            child: Row(
-              children: [
-                SpaceHelper.horizontalSpace10,
-                Image.asset(
-                  'assets/images/search.png',
-                  height: 10.h,
-                  width: 10.w,
-                ),
-                SpaceHelper.horizontalSpace5,
-                Text(
-                  'Where would you like to clean?',
-                  style: StyleHelper.nunitoSemi12,
-                )
-              ],
+          Expanded(
+            flex: 3,
+            child: Container(
+              height: 37.h,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: ColorHelper.greyIconColor,
+                  ),
+                  borderRadius: BorderRadius.circular(10.r)),
+              child: Row(
+                children: [
+                  SpaceHelper.horizontalSpace10,
+                  Image.asset(
+                    'assets/images/search.png',
+                    height: 10.h,
+                    width: 10.w,
+                  ),
+                  SpaceHelper.horizontalSpace5,
+                  Expanded(
+                    child: Text(
+                      'Where would you like to clean?',
+                      style: StyleHelper.nunitoSemi12,
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           SpaceHelper.horizontalSpace5,
-          Row(
-            children: [
-              Container(
-                height: 37.h,
-                width: 39.w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.r),
-                    color: ColorHelper.blueColor),
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/searchIcon.png',
-                    height: 15.h,
-                    width: 15.w,
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    height: 37.h,
+                    // width: 39.w,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.r),
+                        color: ColorHelper.blueColor),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/searchIcon.png',
+                        height: 15.h,
+                        width: 15.w,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              SpaceHelper.horizontalSpace15,
-              Icon(
-                Icons.notifications,
-                size: 25.sp,
-                color: ColorHelper.greyIconColor,
-              )
-            ],
+                SpaceHelper.horizontalSpace15,
+                Expanded(
+                  child: Icon(
+                    Icons.notifications,
+                    size: 25.sp,
+                    color: ColorHelper.greyIconColor,
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),
@@ -299,26 +311,35 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: StyleHelper.interSemiBold20,
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: StyleHelper.interSemiBold20,
+                    ),
                   ),
                   SpaceHelper.verticalSpace3,
-                  Text(
-                    subtitle,
-                    style: StyleHelper.interBold10,
+                  Expanded(
+                    child: Text(
+                      subtitle,
+                      overflow: TextOverflow.ellipsis,
+                      style: StyleHelper.interBold10,
+                    ),
                   ),
                   SpaceHelper.verticalSpace15,
-                  Container(
-                    width: 120.w,
-                    height: 25.h,
-                    decoration: BoxDecoration(
-                        color: const Color(0xff1374B7),
-                        borderRadius: BorderRadius.circular(19.r)),
-                    child: Center(
-                      child: Text(
-                        'BOOK NOW',
-                        style: StyleHelper.interRegular12,
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 10.h),
+                      width: 120.w,
+                      height: 25.h,
+                      decoration: BoxDecoration(
+                          color: const Color(0xff1374B7),
+                          borderRadius: BorderRadius.circular(19.r)),
+                      child: Center(
+                        child: Text(
+                          'BOOK NOW',
+                          style: StyleHelper.interRegular12,
+                        ),
                       ),
                     ),
                   )
@@ -348,6 +369,7 @@ class HomeScreen extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(17.r), color: bgColor),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
             padding: EdgeInsets.only(left: 15.w),
@@ -359,11 +381,14 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Text(
                     title,
+                    overflow: TextOverflow.ellipsis,
                     style: StyleHelper.poppinsSemi16,
                   ),
                   SpaceHelper.verticalSpace3,
                   Text(
                     subtitle,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
                     style: StyleHelper.interMedium10,
                   ),
                 ],
@@ -372,14 +397,14 @@ class HomeScreen extends StatelessWidget {
           ),
           const Spacer(),
           SizedBox(
-            // color: Colors.red,
+            // color: Colors.amber,
             // height: 128.h,
-            width: MediaQuery.of(context).size.width / 2 - 3.3.w,
+            width: MediaQuery.of(context).size.width / 2 - 30.w,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(17.r),
               child: Image.asset(
                 img,
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ),
             ),
           )

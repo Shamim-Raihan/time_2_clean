@@ -76,6 +76,12 @@ class StyleHelper {
     fontFamily: 'Inter',
     color: Colors.white,
   );
+  static TextStyle interBold16 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Inter',
+    color: Colors.white,
+  );
   static TextStyle interBold10Black = TextStyle(
     fontSize: 10.sp,
     fontWeight: FontWeight.w700,
