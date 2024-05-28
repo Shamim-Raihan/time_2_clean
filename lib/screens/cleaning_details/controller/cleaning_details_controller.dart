@@ -5,8 +5,10 @@ import '../../../models/recurring_option_model.dart';
 
 class CleaningDetailsController extends GetxController {
   var cleanerIdController = TextEditingController().obs;
-
   var spacing = 8.0.obs;
+  var selectedCleanerGender = ''.obs;
+  var selectedCleanerPerson = ''.obs;
+
 
   var recurringOptions = <RecurringOptionModel>[
     RecurringOptionModel(

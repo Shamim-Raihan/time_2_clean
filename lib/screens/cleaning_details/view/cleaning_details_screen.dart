@@ -24,7 +24,6 @@ class CleaningDetailsScreen extends StatelessWidget {
       backgroundColor: ColorHelper.bgColor,
       body: Column(
         children: [
-          SpaceHelper.verticalSpace50,
           const CommonAppbar(
             title: 'Cleaning',
           ),
@@ -48,6 +47,8 @@ class CleaningDetailsScreen extends StatelessWidget {
                     _buildDateTimeView(),
                     SpaceHelper.verticalSpace20,
                     _buildRecurringOptionView(),
+                    SpaceHelper.verticalSpace20,
+                    _buildCleanerTypeView(),
                     SpaceHelper.verticalSpace20,
                   ],
                 ),
@@ -73,13 +74,155 @@ class CleaningDetailsScreen extends StatelessWidget {
         SpaceHelper.verticalSpace5,
         SizedBox(
           width: double.infinity,
-          child: buildRecurringOptionView(),
+          child: _buildRecurringOptionItemView(),
         ),
       ],
     );
   }
 
-  Widget buildRecurringOptionView() => Obx(
+  Widget _buildCleanerTypeView() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Chosse Cleaner Type',
+          style: StyleHelper.interSemiBold18,
+        ),
+        SpaceHelper.verticalSpace5,
+        SizedBox(
+          width: double.infinity,
+          child: _buildCleanerTypeItemView(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCleanerTypeItemView() {
+    return Obx(() => 
+      Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Row(
+                  children: [
+                    Radio<String>(
+                      value: 'Male',
+                      groupValue:
+                          cleaningDetailsController.selectedCleanerGender.value,
+                      onChanged: (String? value) {
+                        cleaningDetailsController.selectedCleanerGender.value =
+                            value!;
+                      },
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    Expanded(child: Text('Male', style: StyleHelper.agreeTextBold.copyWith(color: ColorHelper.blackColor, fontSize: 10.sp),)),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Row(
+                  children: [
+                    Radio<String>(
+                      value: 'Female',
+                      groupValue:
+                          cleaningDetailsController.selectedCleanerGender.value,
+                      onChanged: (String? value) {
+                        cleaningDetailsController.selectedCleanerGender.value =
+                            value!;
+                      },
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    Expanded(child: Text('Female', style: StyleHelper.agreeTextBold.copyWith(color: ColorHelper.blackColor, fontSize: 10.sp),)),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Row(
+                  children: [
+                    Radio<String>(
+                      value: 'No Preferance',
+                      groupValue:
+                          cleaningDetailsController.selectedCleanerGender.value,
+                      onChanged: (String? value) {
+                        cleaningDetailsController.selectedCleanerGender.value =
+                            value!;
+                      },
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    Expanded(child: Text('No Preferance', style: StyleHelper.agreeTextBold.copyWith(color: ColorHelper.blackColor, fontSize: 10.sp),)),
+                  ],
+                ),
+              )
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Row(
+                  children: [
+                    Radio<String>(
+                      value: 'Single',
+                      groupValue:
+                          cleaningDetailsController.selectedCleanerPerson.value,
+                      onChanged: (String? value) {
+                        cleaningDetailsController.selectedCleanerPerson.value =
+                            value!;
+                      },
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    Expanded(child: Text('Single', style: StyleHelper.agreeTextBold.copyWith(color: ColorHelper.blackColor, fontSize: 10.sp),)),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Row(
+                  children: [
+                    Radio<String>(
+                      value: 'Partner',
+                      groupValue:
+                          cleaningDetailsController.selectedCleanerPerson.value,
+                      onChanged: (String? value) {
+                        cleaningDetailsController.selectedCleanerPerson.value =
+                            value!;
+                      },
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    Expanded(child: Text('Partner', style: StyleHelper.agreeTextBold.copyWith(color: ColorHelper.blackColor, fontSize: 10.sp),)),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Row(
+                  children: [
+                    Radio<String>(
+                      value: 'No Preferance',
+                      groupValue:
+                          cleaningDetailsController.selectedCleanerPerson.value,
+                      onChanged: (String? value) {
+                        cleaningDetailsController.selectedCleanerPerson.value =
+                            value!;
+                      },
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    Expanded(child: Text('No Preferance', style: StyleHelper.agreeTextBold.copyWith(color: ColorHelper.blackColor, fontSize: 10.sp),)),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRecurringOptionItemView() => Obx(
         () => Wrap(
           runSpacing: cleaningDetailsController.spacing.value,
           spacing: cleaningDetailsController.spacing.value,
