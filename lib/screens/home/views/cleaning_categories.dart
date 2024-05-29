@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:time_2_clean/global_widgets/bottom_nav_bar.dart';
@@ -22,12 +21,11 @@ class CleaningCategories extends StatelessWidget {
         children: [
           const CommonAppbar(
             title: 'What Do You Need?',
+            // img: 'assets/images/crossIcon.png',
           ),
-          SizedBox(
-            // color: Colors.red,
-            width: MediaQuery.of(context).size.width,
+          Expanded(
             child: Padding(
-              padding: EdgeInsets.only(left: 12.w, right: 12.w),
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Row(
                 children: [
                   leftSelection(),
@@ -37,7 +35,7 @@ class CleaningCategories extends StatelessWidget {
               ),
             ),
           ),
-          bottomSection(context)
+          bottomSection(context),
         ],
       ),
       bottomNavigationBar: CustomBottomNavBar(),
@@ -45,13 +43,11 @@ class CleaningCategories extends StatelessWidget {
   }
 
   Widget bottomSection(BuildContext context) {
-    return Expanded(
-        flex: 1,
-        child: Image.asset(
-          'assets/images/categoriesBottomImg.png',
-          fit: BoxFit.cover,
-          width: MediaQuery.of(context).size.width,
-        ));
+    return Image.asset(
+      'assets/images/categoriesBottomImg.png',
+      fit: BoxFit.cover,
+      width: MediaQuery.of(context).size.width,
+    );
   }
 
   Widget rightSelection() {
@@ -60,24 +56,33 @@ class CleaningCategories extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InkWell(
-            onTap: () {
-              Get.to(() => const DeepCleaning(),
-                  transition: Transition.rightToLeft);
-            },
-            child: Image.asset(
-              'assets/images/deepCleaning.png',
-              height: 135.h,
+          Flexible(
+            flex: 2,
+            fit: FlexFit.loose,
+            child: InkWell(
+              onTap: () {
+                Get.to(() => const DeepCleaning(),
+                    transition: Transition.rightToLeft);
+              },
+              child: Image.asset(
+                'assets/images/deepCleaning.png',
+                fit: BoxFit.fill,
+              ),
             ),
           ),
-          InkWell(
-            onTap: () {
-              Get.to(() => const MoveInOutCleaning(),
-                  transition: Transition.rightToLeft);
-            },
-            child: Image.asset(
-              'assets/images/moveInOutCleaning.png',
-              height: 260.h,
+          SpaceHelper.verticalSpace10,
+          Flexible(
+            flex: 3,
+            fit: FlexFit.loose,
+            child: InkWell(
+              onTap: () {
+                Get.to(() => const MoveInOutCleaning(),
+                    transition: Transition.rightToLeft);
+              },
+              child: Image.asset(
+                'assets/images/moveInOutCleaning.png',
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         ],
@@ -91,24 +96,31 @@ class CleaningCategories extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InkWell(
-            onTap: () {
-              Get.to(() => const StandardCleaning(),
-                  transition: Transition.rightToLeft);
-            },
-            child: Image.asset(
-              'assets/images/standardCleaning.png',
-              height: 210.h,
+          Flexible(
+            flex: 3,
+            child: InkWell(
+              onTap: () {
+                Get.to(() => const StandardCleaning(),
+                    transition: Transition.rightToLeft);
+              },
+              child: Image.asset(
+                'assets/images/standardCleaning.png',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          InkWell(
-            onTap: () {
-              Get.to(() => const RentalCleaning(),
-                  transition: Transition.rightToLeft);
-            },
-            child: Image.asset(
-              'assets/images/rentalCleaning.png',
-              height: 162.h,
+          SpaceHelper.verticalSpace10,
+          Flexible(
+            flex: 2,
+            child: InkWell(
+              onTap: () {
+                Get.to(() => const RentalCleaning(),
+                    transition: Transition.rightToLeft);
+              },
+              child: Image.asset(
+                'assets/images/rentalCleaning.png',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ],
