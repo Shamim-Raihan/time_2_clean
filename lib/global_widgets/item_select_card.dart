@@ -58,7 +58,7 @@ class ItemSelectCard extends StatelessWidget {
                     child: Center(
                         child: Text(
                       '1',
-                      style: StyleHelper.interRegularBold13,
+                      style: StyleHelper.interBold13,
                     )),
                   ),
                   InkWell(

@@ -8,7 +8,16 @@ import 'package:time_2_clean/utils/style_helper.dart';
 class CommonAppbar extends StatelessWidget {
   final String title;
   final String? img;
-  const CommonAppbar({super.key, required this.title, this.img});
+  final Color? color;
+  final Color? bgcolor;
+  final Color? iconcolor;
+  const CommonAppbar(
+      {super.key,
+      required this.title,
+      this.img,
+      this.color,
+      this.bgcolor,
+      this.iconcolor});
 
   @override
   Widget build(BuildContext context) {
@@ -62,26 +71,39 @@ class CommonAppbar extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // if (img != null) SizedBox(width: 5.w),
-                  if (img != null) Image.asset(img!, height: 35.h, width: 35.w),
                   if (img != null) SizedBox(width: 5.w),
-                  Text(
-                    title,
-                    style: StyleHelper.interSemiBold20Black,
+                  if (img != null) Image.asset(img!, height: 25.h, width: 25.w),
+                  Expanded(
+                    flex: 4,
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Inter',
+                        color: color,
+                      ),
+                    ),
                   )
                 ],
               ),
             ),
             Padding(
               padding: EdgeInsets.only(right: 18.w),
-              child: SizedBox(
-                height: 35.h,
+              child: Container(
+                height: 30.h,
                 width: 35.w,
-                child: Image.asset('assets/images/filterIcon.png'),
+                decoration: BoxDecoration(
+                    color: bgcolor, borderRadius: BorderRadius.circular(10.r)),
+                child: Image.asset(
+                  'assets/images/filterIcon.png',
+                  color: iconcolor,
+                ),
               ),
             )
           ],

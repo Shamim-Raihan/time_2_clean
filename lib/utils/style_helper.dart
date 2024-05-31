@@ -46,7 +46,7 @@ class StyleHelper {
     fontFamily: 'Inter',
     color: const Color(0xff0F1225),
   );
-    static TextStyle interSemiBold16 = TextStyle(
+  static TextStyle interSemiBold16 = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     fontFamily: 'Inter',
@@ -64,6 +64,21 @@ class StyleHelper {
     fontFamily: 'Inter',
     color: ColorHelper.blackColor,
   );
+  static TextStyle interSemiBold8 = TextStyle(
+    fontSize: 8.sp,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Inter',
+    color: ColorHelper.blackColor,
+  );
+  static TextStyle interSemiBold8Tier(Color color) {
+    return TextStyle(
+      fontSize: 8.sp,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Inter',
+      color: color,
+    );
+  }
+
   static TextStyle interSemiBold11 = TextStyle(
     fontSize: 11.sp,
     fontWeight: FontWeight.w600,
@@ -82,17 +97,49 @@ class StyleHelper {
     fontFamily: 'Inter',
     color: Colors.white,
   );
+  static TextStyle interBold24(Color color) {
+    return TextStyle(
+      fontSize: 24.sp,
+      fontWeight: FontWeight.w700,
+      fontFamily: 'Inter',
+      color: color,
+    );
+  }
+
+  static TextStyle interBold34(Color color) {
+    return TextStyle(
+        fontSize: 34.sp,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'Inter',
+        color: color);
+  }
+
   static TextStyle interBold10Black = TextStyle(
     fontSize: 10.sp,
     fontWeight: FontWeight.w700,
     fontFamily: 'Inter',
     color: const Color(0xff0F1225),
   );
+
+  static TextStyle interBold10Tier(Color color) {
+    return TextStyle(
+        fontSize: 10.sp,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'Inter',
+        color: color);
+  }
+
   static TextStyle interRegular12 = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     fontFamily: 'Inter',
     color: Colors.white,
+  );
+  static TextStyle interRegular12Black = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Inter',
+    color: const Color(0xff0F1225),
   );
   static TextStyle interRegular13 = TextStyle(
     fontSize: 13.sp,
@@ -101,7 +148,17 @@ class StyleHelper {
     letterSpacing: 0.7,
     color: const Color(0xff0F1225).withOpacity(.6),
   );
-    static TextStyle interRegularBold13 = TextStyle(
+  static TextStyle interRegular13Tier(Color color) {
+    return TextStyle(
+      fontSize: 13.sp,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Inter',
+      letterSpacing: 0.7,
+      color: color,
+    );
+  }
+
+  static TextStyle interBold13 = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeight.bold,
     fontFamily: 'Inter',
